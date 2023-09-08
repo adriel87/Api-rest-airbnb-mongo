@@ -1,6 +1,10 @@
 # managers files
 pnpm-lock.yaml
 
+# personal files or folders
+.vscode
+
+# repo 
 node_modules
 dist
 .env
