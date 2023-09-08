@@ -9,7 +9,8 @@
       "baseUrl": "./src",
       "paths": {
         "#*": ["*"]
-      }
+      },
+      "allowImportingTsExtensions": true,
     },
     "include": ["src/**/*"]
   }

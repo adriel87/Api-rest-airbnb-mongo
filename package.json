@@ -1,15 +1,29 @@
 {
   "name": "Api-rest-airbnb-mongo",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Basic Api rest for book an apartment",
+  "main": "src/index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "run-p -l type-check:watch start:dev",
+    "start:dev": "nodemon -r dotenv/config --transpileOnly --esm src/index.ts",
+    "start:console-runners": "nodemon --no-stdin --transpileOnly --esm src/console-runners/index.ts",
+    "type-check": "tsc --noEmit --preserveWatchOutput",
+    "type-check:watch": "npm run type-check -- --watch",
+    "start:local-db": "docker compose up -d"
+  },
+  "imports": {
+    "#common/*": "./src/common/*",
+    "#common-app/*": "./src/common-app/*",
+    "#core/*": "./src/core/*",
+    "#dals/*": "./src/dals/*",
+    "#pods/*": "./src/pods/*"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/cors": "^2.8.14",
+    "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2"
   },
