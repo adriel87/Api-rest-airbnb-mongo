@@ -7,6 +7,7 @@ export interface Review {
 }
 
 export interface Apartment {
+    id:string
     name: string
     description: string
     address: string
