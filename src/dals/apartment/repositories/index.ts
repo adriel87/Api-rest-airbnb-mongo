@@ -1,4 +1,4 @@
-import { envConstant } from "#core";
+import { envConstant } from "#core/index.ts";
 import { apartmentDBRepository } from "./apartment.db-repository";
 import { apartmentMockRepository } from "./apartment.mock-repository";
 import { ApartmentRespository } from "./apartment.repository";

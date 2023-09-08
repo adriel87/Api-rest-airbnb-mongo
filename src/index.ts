@@ -1,9 +1,12 @@
 import { createRestApi, envConstant } from "#core/index.ts";
+import { apartmentApi } from "#pods/apartment/index.ts";
 
 
 
 
 const restApiServer = createRestApi();
+
+restApiServer.use(apartmentApi)
 
 restApiServer.listen(envConstant.PORT,()=>{
 
