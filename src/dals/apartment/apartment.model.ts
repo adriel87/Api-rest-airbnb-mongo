@@ -1,6 +1,7 @@
 
 
 export interface Review {
+    id: string
     date?: string
     userName: string
     comment: string

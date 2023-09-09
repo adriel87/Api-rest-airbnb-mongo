@@ -1,21 +1,54 @@
-import { Review, Apartment as model } from '#dals/index.ts'
-import { AirbnbApartments as apiModel } from '#pods/index.ts'
+import { ObjectId } from 'mongodb'
+
+import { Review as modelReview, Apartment as model } from '#dals/index.ts'
+import { Apartment as apiModel, Review as apiModelReview } from '#pods/index.ts'
 
 
 
 export const apartmentFromApiToModel = (apartment : apiModel) : model=> ({
     address: apartment.address.street,
     description: apartment.description,
-    id:apartment._id,
+    id:apartment._id.toString(),
     name:apartment.name,
     numberOfBathrooms: Number(apartment.bathrooms.$numberDecimal),
     numberOfBeds: apartment.beds,
-    // TODO: review mapper
-    reviews:apartment.reviews as Review[],
+    reviews: listReviewsFromApiToModel(apartment.reviews),
     rooms:apartment.bedrooms
 })
 
 export const apartmentFromModelToApi = (apartment: model): apiModel => ({
-    // TODO: from model to api mapper
-    
+    _id: new ObjectId(apartment.id),
+    address:{
+        street: apartment.address
+    },
+    description:apartment.description,
+    name:apartment.name,
+    bathrooms:{
+        $numberDecimal:apartment.numberOfBathrooms.toString()
+    },
+    beds:apartment.numberOfBeds,
+    bedrooms:apartment.rooms,
+    reviews: listReviewsFromModelToApi(apartment.reviews),
 })
+
+export const reviewFromApiToModel = (review: apiModelReview) : modelReview =>({
+    id: review._id.toString(),
+    comment:review.comments,
+    userName:review.reviewer_name,
+    date:review.date.$date
+})
+
+export const listReviewsFromApiToModel = (reviews: apiModelReview[]) : modelReview[] => [...reviews.map(reviewFromApiToModel)]
+
+export const reviewFromModelToApi = (review: modelReview) : apiModelReview => ({
+    comments:review.comment,
+    reviewer_name:review.userName,
+    date: {
+        $date:review.date
+    },
+    _id: new ObjectId(review.id),
+    listing_id: null,
+    reviewer_id: null,
+})
+
+export const listReviewsFromModelToApi = (reviews: modelReview[]) : apiModelReview[] => [...reviews.map(reviewFromModelToApi)]

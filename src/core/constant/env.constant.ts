@@ -6,6 +6,6 @@ export const envConstant = {
     CORS_ORIGIN: process.env?.CORS_ORIGIN ?? 'no variable added',
     CORS_METHODS: process.env?.CORS_METHODS ?? 'no variable added',
     CORS_CREDENTIALS: process.env?.CORS_CREDENTIALS === 'TRUE',
-    API_MOCK: process.env?.API_MOCK ?? 'no variable added',
+    API_MOCK: process.env?.API_MOCK === 'true',
     MONGODB_URI: process.env?.MONGODB_URI ?? 'no variable added',
 }
