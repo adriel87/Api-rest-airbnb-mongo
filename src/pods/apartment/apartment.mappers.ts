@@ -4,6 +4,7 @@ import { Review as modelReview, Apartment as model } from '#dals/index.ts'
 import { Apartment as apiModel, Review as apiModelReview } from '#pods/index.ts'
 
 
+export const listApartmentFromApiToModel = (apartments: apiModel[]) : model[] => [...apartments.map(apartmentFromApiToModel)]
 
 export const apartmentFromApiToModel = (apartment : apiModel) : model=> ({
     address: apartment.address.street,

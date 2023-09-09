@@ -11,6 +11,7 @@ export const mocksApartment : Apartment[] = [
         rooms:1,
         reviews:[
             {
+                id:'als',
                 comment:'estuvo risa',
                 userName:'el risitas',
                 date: '2020-20-02'
@@ -27,6 +28,7 @@ export const mocksApartment : Apartment[] = [
         rooms:2,
         reviews:[
             {
+                id:'als',
                 comment:'estuvo risa',
                 userName:'el risitas',
                 date: '2020-20-02'
@@ -43,6 +45,7 @@ export const mocksApartment : Apartment[] = [
         rooms:3,
         reviews:[
             {
+                id:'als',
                 comment:'estuvo risa',
                 userName:'el risitas',
                 date: '2020-20-02'
@@ -59,6 +62,7 @@ export const mocksApartment : Apartment[] = [
         rooms:4,
         reviews:[
             {
+                id:'als',
                 comment:'estuvo risa',
                 userName:'el risitas',
                 date: '2020-20-02'
