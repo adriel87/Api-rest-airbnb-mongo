@@ -11,6 +11,7 @@ const getApartmentById = async (apartmentId:string) =>{
             // el tipo proporcionado por mongodb.d.ts no admite el tipo string 
             // cuando el driver realmente lo acepta y en la documentacion oficial
             // se puede buscar por string o number
+            // @ts-ignore: Unreachable code error
             _id: apartmentId
         },
     )
@@ -41,6 +42,7 @@ const addNewReviewToApartment = async (apartmentId:string, review:Review) => {
     const apiReview = reviewFromModelToApi(review)
     const isUpdated = await db.collection<Apartment>(envConstant.MONGODB_APARTMENT_COLLECTION).updateOne(
         {
+        // @ts-ignore: Unreachable code error
          _id: apartmentId
         },
         {

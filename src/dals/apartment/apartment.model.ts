@@ -1,14 +1,14 @@
 
 
 export interface Review {
-    id: string
+    id?: string
     date?: string
     userName: string
     comment: string
 }
 
 export interface Apartment {
-    id:string
+    id?:string
     name: string
     description: string
     address: string
