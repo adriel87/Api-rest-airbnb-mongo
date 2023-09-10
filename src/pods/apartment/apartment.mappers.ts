@@ -42,14 +42,14 @@ export const reviewFromApiToModel = (review: apiModelReview) : modelReview =>({
 export const listReviewsFromApiToModel = (reviews: apiModelReview[]) : modelReview[] => [...reviews.map(reviewFromApiToModel)]
 
 export const reviewFromModelToApi = (review: modelReview) : apiModelReview => ({
+    _id: new ObjectId(),
     comments:review.comment,
     reviewer_name:review.userName,
     date: {
         $date:review.date
     },
-    _id: new ObjectId(review.id),
-    listing_id: null,
-    reviewer_id: null,
+    listing_id: "jkakjdhlfkjah",
+    reviewer_id: "kajlsdflakjf",
 })
 
 export const listReviewsFromModelToApi = (reviews: modelReview[]) : apiModelReview[] => [...reviews.map(reviewFromModelToApi)]

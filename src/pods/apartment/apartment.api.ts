@@ -36,7 +36,7 @@ apartmentApi
         if (isReviewAdded) {
             res.sendStatus(204)
         } else {
-            res.status(500)
+            res.sendStatus(500)
         }
     } catch (error) {
         next(error)
