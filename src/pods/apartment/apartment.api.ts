@@ -7,6 +7,7 @@ export const apartmentApi = Router()
 
 apartmentApi
 .get('/',(_, res)=>{
+    throw new Error('a onde vas muchacho')
     res.send('hola')
 })
 .get('/apartments', async (req, res, next)=>{

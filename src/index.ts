@@ -1,3 +1,4 @@
+import { isValidMethod, logErrors, showRequestInConsole } from "#common/index.ts";
 import { connectToDBServer, createRestApi, envConstant } from "#core/index.ts";
 import { apartmentApi } from "#pods/apartment/index.ts";
 
@@ -6,7 +7,13 @@ import { apartmentApi } from "#pods/apartment/index.ts";
 
 const restApiServer = createRestApi();
 
+// middlewares
+restApiServer.use(isValidMethod)
+restApiServer.use(showRequestInConsole)
+
 restApiServer.use(apartmentApi)
+
+restApiServer.use(logErrors)
 
 restApiServer.listen(envConstant.PORT,async ()=>{
 
