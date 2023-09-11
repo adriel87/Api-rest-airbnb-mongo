@@ -4,7 +4,7 @@ import { Review as modelReview, Apartment as model } from '#dals/index.ts'
 import { Apartment as apiModel, Review as apiModelReview } from '#pods/index.ts'
 
 
-export const listApartmentFromApiToModel = (apartments: apiModel[]) : model[] => [...apartments.map(apartmentFromApiToModel)]
+export const listApartmentFromApiToModel = (apartments: apiModel[]) : model[] => apartments ? [...apartments.map(apartmentFromApiToModel)] : []
 
 export const apartmentFromApiToModel = (apartment : apiModel) : model=> ({
     address: apartment?.address?.street ?? '',
@@ -39,7 +39,7 @@ export const reviewFromApiToModel = (review: apiModelReview) : modelReview =>({
     date:review?.date?.$date ?? ''
 })
 
-export const listReviewsFromApiToModel = (reviews: apiModelReview[]) : modelReview[] => [...reviews.map(reviewFromApiToModel)]
+export const listReviewsFromApiToModel = (reviews: apiModelReview[]) : modelReview[] => reviews ? [...reviews.map(reviewFromApiToModel)] : []
 
 export const reviewFromModelToApi = (review: modelReview) : apiModelReview => ({
     _id: new ObjectId(),

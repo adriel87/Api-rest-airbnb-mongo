@@ -1,2 +1,3 @@
-export const allowedMethods = (methods:string) =>
-    methods.split(',').filter(method => method !== '*')
+export const allowedMethods = (methods:string) => methods.split(',').filter(method => method !== '*')
+
+

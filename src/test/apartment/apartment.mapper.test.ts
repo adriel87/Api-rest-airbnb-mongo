@@ -1,6 +1,6 @@
 import colors from 'colors'
 import { ObjectId } from 'mongodb'
-import { apartmentFromApiToModel, apartmentFromModelToApi, Apartment as apiModel, Review as apiReview, reviewFromApiToModel, reviewFromModelToApi} from "#pods/index.ts"
+import { apartmentFromApiToModel, apartmentFromModelToApi, Apartment as apiModel, Review as apiReview, listApartmentFromApiToModel, listReviewsFromApiToModel, reviewFromApiToModel, reviewFromModelToApi} from "#pods/index.ts"
 import { Apartment as domainModel, Review as domainReview } from '#dals/index.ts'
 
 describe(colors.bgGreen.bold(' Apartment mappers '), ()=>{
@@ -53,6 +53,54 @@ describe(colors.bgGreen.bold(' Apartment mappers '), ()=>{
         })
     
     })
+
+    describe(colors.green('From list of api model to list of domain model'), ()=>{
+
+        test('whit a list from api ew get a list of apartment',()=>{
+
+            // arrange
+            const listOfApartmentFromApi : apiModel[] = [
+                {
+                    _id:new ObjectId(),
+                    name: 'el test suite',
+                    description: 'un super lugar de amor',
+                    address:{
+                        street:'entre un sitio y otro'
+                    },
+                    bedrooms: 10,
+                    beds:2,
+                    bathrooms:{
+                        $numberDecimal:'1.0'
+                    },
+                    reviews:[]
+                }
+            ] 
+            // act
+            const listOfApartment : domainModel[] = listApartmentFromApiToModel(listOfApartmentFromApi)
+            // assert
+            expect(listOfApartment[0].name).toBe('el test suite')
+            expect(listOfApartment[0].description).toStrictEqual('un super lugar de amor')
+            expect(listOfApartment[0].address).toStrictEqual('entre un sitio y otro')
+            expect(listOfApartment[0].rooms).toStrictEqual(10)
+            expect(listOfApartment[0].numberOfBeds).toStrictEqual(2)
+            expect(listOfApartment[0].numberOfBathrooms).toEqual(1)
+            expect(listOfApartment[0].reviews).toMatchObject([])
+        })
+
+        test('whit empty or null list from api we get a empty array of apartment', ()=>{
+            // arrange
+            const nullApartments = null;
+            const emptyListApartment : apiModel[] = []
+            // act
+            const apartmentsWhitNull = listApartmentFromApiToModel(nullApartments)
+            const apartmentsWhitEmptyArray = listApartmentFromApiToModel(emptyListApartment)
+            // assert
+            expect(apartmentsWhitNull).toMatchObject([])
+            expect(apartmentsWhitEmptyArray).toMatchObject([])
+
+        })
+    })
+
     describe(colors.green('From domain model to api model'), ()=>{
     
         
@@ -133,6 +181,43 @@ describe(colors.bgGreen.bold(' Review mappers '), ()=>{
             expect(review.userName).toBe('')
         })
     })
+
+    describe(colors.green("From list api review to list domain review"),()=>{
+        test("whit valid list api review get a valid list domain review",()=>{
+            // arrange
+            const apiReviews : apiReview[]= [{
+                _id: new ObjectId(),
+                comments: 'comments',
+                date:{
+                    $date:'date'
+                },
+                listing_id:'listing_id',
+                reviewer_id:'review_id',
+                reviewer_name:'paco'
+            }]
+            // act
+            const reviews = listReviewsFromApiToModel(apiReviews)
+            // assert
+            expect(reviews[0].comment).toBe('comments')
+            expect(reviews[0].date).toBe('date')
+            expect(reviews[0].id).not.toBeNull()
+            expect(reviews[0].userName).toBe('paco')
+        })
+
+        test("whit null or empty list of api review get a valid empty list of domain review", ()=>{
+            // arrange
+            const reviewsWhitNull = null
+            const reviewsWhitEmpty : apiReview[]= []
+            
+            // act
+            const reviewsNull = listReviewsFromApiToModel(reviewsWhitNull)
+            const reviewsEmpty = listReviewsFromApiToModel(reviewsWhitEmpty)
+            // assert
+            expect(reviewsNull).toMatchObject([])
+            expect(reviewsEmpty).toMatchObject([])
+        })
+    })
+    
     describe(colors.green("From domain review to api review"),()=>{
         test("whit valid domain review get a valid api review",()=>{
             // arrange
