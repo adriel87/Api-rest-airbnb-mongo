@@ -1,7 +1,7 @@
 import { ObjectId } from 'mongodb'
 
-import { Review as modelReview, Apartment as model } from '#dals/index.ts'
-import { Apartment as apiModel, Review as apiModelReview } from '#pods/index.ts'
+import { Review as modelReview, Apartment as model } from '#dals/index.js'
+import { Apartment as apiModel, Review as apiModelReview } from '#pods/index.js'
 
 
 export const listApartmentFromApiToModel = (apartments: apiModel[]) : model[] => apartments ? [...apartments.map(apartmentFromApiToModel)] : []

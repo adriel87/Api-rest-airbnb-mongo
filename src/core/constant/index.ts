@@ -1,2 +1,2 @@
-export * from './env.constant';
-export * from './rest-api.constant';
+export * from './env.constant.js';
+export * from './rest-api.constant.js';

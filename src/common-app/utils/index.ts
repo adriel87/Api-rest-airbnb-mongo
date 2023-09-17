@@ -1,1 +1,1 @@
-export * from './allowedMethods.util';
+export * from './allowedMethods.util.js';

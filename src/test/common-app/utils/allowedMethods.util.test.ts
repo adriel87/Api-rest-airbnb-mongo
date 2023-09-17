@@ -1,5 +1,5 @@
 import colors from 'colors'
-import { allowedMethods } from "#common-app/index.ts"
+import { allowedMethods } from "#common-app/index.js"
 
 describe(colors.bgBlue.bold('  UTILS -- allowedMethods'),()=>{
 

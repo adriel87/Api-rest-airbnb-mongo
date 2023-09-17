@@ -1,7 +1,7 @@
 import colors from 'colors'
 import { ObjectId } from 'mongodb'
-import { apartmentFromApiToModel, apartmentFromModelToApi, Apartment as apiModel, Review as apiReview, listApartmentFromApiToModel, listReviewsFromApiToModel, reviewFromApiToModel, reviewFromModelToApi} from "#pods/index.ts"
-import { Apartment as domainModel, Review as domainReview } from '#dals/index.ts'
+import { apartmentFromApiToModel, apartmentFromModelToApi, Apartment as apiModel, Review as apiReview, listApartmentFromApiToModel, listReviewsFromApiToModel, reviewFromApiToModel, reviewFromModelToApi} from "#pods/index.js"
+import { Apartment as domainModel, Review as domainReview } from '#dals/index.js'
 
 describe(colors.bgGreen.bold(' Apartment mappers '), ()=>{
 

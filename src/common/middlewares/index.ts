@@ -1,2 +1,2 @@
-export * from './isValidMethod.middleware';
-export * from './loggers.middleware';
+export * from './isValidMethod.middleware.js';
+export * from './loggers.middleware.js';

@@ -1,6 +1,6 @@
-import { Apartment, Review } from "../apartment.model";
-import { ApartmentRespository } from "./apartment.repository";
-import { mocksApartment  } from './mock-data'
+import { Apartment, Review } from "../apartment.model.js";
+import { ApartmentRespository } from "./apartment.repository.js";
+import { mocksApartment  } from './mock-data.js'
 
 
 const PaginatedApartment = (page:number, pageSize: number) : Apartment[] =>{

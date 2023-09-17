@@ -1,8 +1,10 @@
 import colors from 'colors'
 import { ErrorRequestHandler, RequestHandler } from "express";
 
-import { allowedMethods } from "#common-app/index.ts";
-import { envConstant } from "#core/index.ts";
+import { allowedMethods } from '#common-app/utils/allowedMethods.util.js';
+import { envConstant } from '#core/index.js';
+
+
 
 export const showRequestInConsole : RequestHandler = (req, res, next) => {
     const method = req.method

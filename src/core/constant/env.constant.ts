@@ -8,5 +8,6 @@ export const envConstant = {
     CORS_CREDENTIALS: process.env?.CORS_CREDENTIALS === 'TRUE',
     API_MOCK: process.env?.API_MOCK === 'true',
     MONGODB_URI: process.env?.MONGODB_URI ?? 'no variable added',
-    MONGODB_APARTMENT_COLLECTION: process.env?.MONGODB_APARTMENT_COLLECTION ?? ''
+    MONGODB_APARTMENT_COLLECTION: process.env?.MONGODB_APARTMENT_COLLECTION ?? '',
+    USE_MONGOOSE: process.env?.USE_MONGOOSE === 'true'
 }

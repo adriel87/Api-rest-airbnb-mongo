@@ -1,6 +1,6 @@
-import { isValidMethod, logErrors, showRequestInConsole } from "#common/index.ts";
-import { connectToDBServer, createRestApi, envConstant } from "#core/index.ts";
-import { apartmentApi } from "#pods/apartment/index.ts";
+import { isValidMethod, logErrors, showRequestInConsole } from "#common/index.js";
+import { connectToDBServer, createRestApi, envConstant } from "#core/index.js";
+import { apartmentApi } from "#pods/apartment/index.js";
 
 
 

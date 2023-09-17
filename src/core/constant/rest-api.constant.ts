@@ -1,5 +1,5 @@
 import { CorsOptions } from 'cors'
-import { envConstant } from '.'
+import { envConstant } from './index.js'
 
 export const corsOptions : CorsOptions= {
     methods: envConstant.CORS_METHODS,

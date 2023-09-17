@@ -1,4 +1,4 @@
-import { Apartment } from "../apartment.model";
+import { Apartment } from "../apartment.model.js";
 
 export const mocksApartment : Apartment[] = [
     {

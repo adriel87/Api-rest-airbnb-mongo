@@ -1,4 +1,4 @@
-import { Apartment, Review } from "../apartment.model";
+import { Apartment, Review } from "../apartment.model.js";
 
 
 export interface ApartmentRespository {
