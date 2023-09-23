@@ -15,11 +15,8 @@ export const apartmentRepositoryImp = () : ApartmentRespository => {
     }
 
     if (envConstant.USE_MONGOOSE) {
-        console.log(colors.bgMagenta.bold('USING MONGOOSE LIBRARY'));
-        
         return apartmentMongooseRepository
     }else {
-        console.log(colors.bgGreen.bold('USING MONGO DRIVER FOR NODE'));
         return apartmentDBRepository
     }
     
