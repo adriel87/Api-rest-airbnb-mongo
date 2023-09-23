@@ -4,6 +4,9 @@
   "description": "Basic Api rest for book an apartment",
   "main": "src/index.ts",
   "scripts": {
+    "prestart": "pnpm create-folder;  pnpm create-env-file",
+    "create-folder":"sh ./scripts/create-folder-dev.sh",
+    "create-env-file":"sh ./scripts/create-dev-env.sh",
     "start": "run-p -l type-check:watch start:dev start:local-db",
     "start:dev": "nodemon -r dotenv/config --transpileOnly --esm src/index.ts",
     "start:console-runners": "nodemon --no-stdin --transpileOnly --esm src/console-runners/index.ts",

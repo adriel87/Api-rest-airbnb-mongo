@@ -1,18 +1,15 @@
-import { Review } from "../apartment.model";
-import { ApartmentRespository } from "./apartment.repository";
+import {  ObjectId } from "mongodb";
+import { Review, } from "#dals/index.js";
+import { Apartment, apartmentFromApiToModel, listApartmentFromApiToModel, reviewFromModelToApi } from "#pods/index.js";
+import { apartmentContext } from "../apartment.context.js";
+import { ApartmentRespository } from "./apartment.repository.js";
 import { db, envConstant } from "#core/index.ts";
-import { Apartment } from "#pods/index.ts";
-import { apartmentFromApiToModel, listApartmentFromApiToModel , reviewFromModelToApi} from '../../../pods/apartment/apartment.mappers'
 
 
 const getApartmentById = async (apartmentId:string) =>{
      const apartmentDB = await db.collection<Apartment>(envConstant.MONGODB_APARTMENT_COLLECTION).findOne(
         {
-            // el tipo proporcionado por mongodb.d.ts no admite el tipo string 
-            // cuando el driver realmente lo acepta y en la documentacion oficial
-            // se puede buscar por string o number
-            // @ts-ignore: Unreachable code error
-            _id: apartmentId
+            _id: new ObjectId(apartmentId)
         },
     )
     const apartment = apartmentFromApiToModel(apartmentDB)
@@ -29,7 +26,7 @@ const getApartmentListPaginated = async (page: number, pageSize:number) => {
     const apartmentsDB = await db.collection<Apartment>(envConstant.MONGODB_APARTMENT_COLLECTION)
         .find({},{
             skip:startIndex,
-            limit:pageSize
+            limit:pageSize ?? 10
         })
         .toArray()
     
@@ -42,8 +39,7 @@ const addNewReviewToApartment = async (apartmentId:string, review:Review) => {
     const apiReview = reviewFromModelToApi(review)
     const isUpdated = await db.collection<Apartment>(envConstant.MONGODB_APARTMENT_COLLECTION).updateOne(
         {
-        // @ts-ignore: Unreachable code error
-         _id: apartmentId
+         _id: new ObjectId(apartmentId)
         },
         {
             $push: {reviews: apiReview},
