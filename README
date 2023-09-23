@@ -130,6 +130,8 @@ _Below is an example of how you can instruct your audience on installing and set
    ```
 3. Set your API in `env` file, take .env.example rename for .env and update your variables
 
+4. https://github.com/Lemoncode/mongodb-sample-dbs-backup
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
@@ -151,10 +153,10 @@ _Below is an example of how you can instruct your audience on installing and set
 ## Roadmap
 
 - [x] Setup initial repo architecture
-- [ ] implement basic configuration of express server
-- [ ] Define the core
-- [ ] first implementation whit mock data
-- [ ] implement whit mongodb
+- [x] implement basic configuration of express server
+- [x] Define the core
+- [x] first implementation whit mock data
+- [x] implement whit mongodb
 
 See the [open issues](https://github.com/adriel87/Api-rest-airbnb-mongo/issues) for a full list of proposed features (and known issues).
 

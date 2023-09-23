@@ -8,4 +8,5 @@ export const connectToDBServer = async (url:string, options?:MongoClientOptions)
     await client.connect()
     console.log(`Conected succesfully to server : ${url}`);
     db = client.db()
+
 }

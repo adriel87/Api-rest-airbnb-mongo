@@ -1,18 +1,18 @@
 import { Review, } from "#dals/index.js";
 import { Apartment, apartmentFromApiToModel, listApartmentFromApiToModel, reviewFromModelToApi } from "#pods/index.js";
 import { Collection, ObjectId } from "mongodb";
-import { apartmentContext } from "./apartment.context.js";
+import { apartmentContext } from "#dals/index.js";
 import { ApartmentRespository } from "./apartment.repository.js";
 
+import { db, envConstant } from "#core/index.js";
 
-const getApartmentById = async (apartmentId:string, ) =>{
-     const apartmentCollection = apartmentContext() as Collection<Apartment>
-     const apartmentDB = await apartmentCollection
-        .findOne(
-            {
-                _id: new ObjectId(apartmentId)
-            },
-        )
+
+const getApartmentById = async (apartmentId:string) =>{
+     const apartmentDB = await db.collection<Apartment>(envConstant.MONGODB_APARTMENT_COLLECTION).findOne(
+        {
+            _id: new ObjectId(apartmentId)
+        },
+    )
     const apartment = apartmentFromApiToModel(apartmentDB)
     return apartment
 }
@@ -27,7 +27,7 @@ const getApartmentListPaginated = async (page: number, pageSize:number) => {
     const apartmentsDB = await apartmentCollection
         .find({},{
             skip:startIndex,
-            limit:pageSize
+            limit:pageSize ?? 10
         })
         .toArray()
     
