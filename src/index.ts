@@ -12,9 +12,9 @@ const restApiServer = createRestApi();
 restApiServer.use(isValidMethod)
 restApiServer.use(showRequestInConsole)
 
-restApiServer.use(apartmentApi)
+restApiServer.use('/api/apartment',apartmentApi)
 restApiServer.use('/api/user',userApi)
-restApiServer.use(securityApi)
+restApiServer.use('/api/auth',securityApi)
 
 restApiServer.use(logErrors)
 

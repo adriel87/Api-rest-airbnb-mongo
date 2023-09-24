@@ -15,7 +15,12 @@ export const userDBRespository : UserRepository = {
             email: email, 
         })
         
-        throw Error('Not implement yet!')
+        const hashedPassword = await hashPassword(password,envConstant.SALT)
+
+        if (hashedPassword === user.password) {
+            return  userFromApiToModel(user)
+        }
+        return null;
     },
     getUserById :async (id) => {
         throw Error('Not implement yet!')

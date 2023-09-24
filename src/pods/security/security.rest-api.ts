@@ -15,9 +15,8 @@ const login : RequestHandler =async (req, res, next) => {
     const { email, password } = req.body
     const user = await userRepository.getUserByEmailAndPassword(email, password)
     
-    const userSession: UserSession = userSessionFromUserModel(user)
-
     if (user) {
+        const userSession: UserSession = userSessionFromUserModel(user)
         const token = jwt.sign(userSession, envConstant.SECRET_KEY, jwtBaseSignConfig)
 
         res.cookie('authorization', bearer(token), secureCookieOptions)

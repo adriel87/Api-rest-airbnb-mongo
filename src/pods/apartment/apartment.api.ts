@@ -1,16 +1,19 @@
 import { apartmentRepositoryImp } from "#dals/index.js";
+import { userAuthenticate, userAuthorization } from "#pods/security/security.middlewares.js";
 import { Router } from "express";
 
 
 
 export const apartmentApi = Router()
 
+apartmentApi.use(userAuthenticate)
+
 apartmentApi
 .get('/',(_, res)=>{
     throw new Error('a onde vas muchacho')
     res.send('hola')
 })
-.get('/apartments', async (req, res, next)=>{
+.get('/apartments' ,async (req, res, next)=>{
     try {
         const page = Number(req.query.page);
         const pageSize = Number(req.query.pageSize);
@@ -20,7 +23,7 @@ apartmentApi
         next(error)
     }
 })
-.get('/apartment/:id', async (req, res, next)=>{
+.get('/:id', async (req, res, next)=>{
     try {
         const { id } = req.params
         const apartment = await apartmentRepositoryImp().getApartment(id);
@@ -29,7 +32,7 @@ apartmentApi
         next(error)
     }
 })
-.put('/apartment/:id/addNewReview', async (req, res, next)=>{
+.put('/:id/addNewReview',userAuthorization("USER"),  async (req, res, next)=>{
     try {
         const { id } = req.params
         const { review } = req.body
