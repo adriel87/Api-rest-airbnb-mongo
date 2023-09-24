@@ -1,7 +1,7 @@
 import colors from 'colors'
 import { isValidMethod, logErrors, showRequestInConsole } from "#common/index.js";
 import { connectToDBServer, connectToDBServerWhitMongoose, createRestApi, envConstant } from "#core/index.js";
-import { apartmentApi } from "#pods/apartment/index.js";
+import { apartmentApi, securityApi, userApi } from '#pods/index.js';
 
 
 
@@ -12,7 +12,9 @@ const restApiServer = createRestApi();
 restApiServer.use(isValidMethod)
 restApiServer.use(showRequestInConsole)
 
-restApiServer.use(apartmentApi)
+restApiServer.use('/api/apartment',apartmentApi)
+restApiServer.use('/api/user',userApi)
+restApiServer.use('/api/auth',securityApi)
 
 restApiServer.use(logErrors)
 

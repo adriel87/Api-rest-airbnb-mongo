@@ -6,8 +6,8 @@
   "type": "module",
   "scripts": {
     "prestart": "pnpm create-folder;  pnpm create-env-file",
-    "create-folder":"sh ./scripts/create-folder-dev.sh",
-    "create-env-file":"sh ./scripts/create-dev-env.sh",
+    "create-folder": "sh ./scripts/create-folder-dev.sh",
+    "create-env-file": "sh ./scripts/create-dev-env.sh",
     "start": "run-p -l type-check:watch start:dev start:local-db",
     "start:dev": "nodemon -r dotenv/config --transpileOnly --esm src/index.ts",
     "start:console-runners": "nodemon --no-stdin --transpileOnly --esm src/console-runners/index.ts",
@@ -27,11 +27,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/cookie-parser": "^1.4.4",
     "@types/cors": "^2.8.14",
+    "@types/jsonwebtoken": "^9.0.3",
     "colors": "^1.4.0",
+    "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.0.0",
     "mongoose": "^7.5.1"
   },
