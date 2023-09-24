@@ -158,6 +158,14 @@ _Below is an example of how you can instruct your audience on installing and set
 - [x] first implementation whit mock data
 - [x] implement whit mongodb
 
+### optional
+
+- [ ] enable login
+- [ ] create endpoint to update an apartment
+- [ ] enable login
+- [ ] integration test
+- [ ] console runner, seed and restore
+ 
 See the [open issues](https://github.com/adriel87/Api-rest-airbnb-mongo/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
