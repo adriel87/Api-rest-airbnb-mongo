@@ -5,4 +5,5 @@ export interface ApartmentRespository {
     getApartmentList: (page?:number, pageSize?:number) => Promise<Apartment[]>
     getApartment: (apartmentId:string) => Promise<Apartment>
     addNewReview: (apartmentId:string, review:Review) => Promise<boolean>
+    updateApartment: (apartment: Apartment, apartmentId:string) => Promise<boolean>
 }
