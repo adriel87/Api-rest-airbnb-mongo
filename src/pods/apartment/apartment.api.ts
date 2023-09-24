@@ -46,3 +46,18 @@ apartmentApi
         next(error)
     }
 })
+.put('/:id',async (req, res, next) => {
+    try {
+        const apartment = req.body?.apartment
+        const apartmentId = req.params?.id
+        const isApartmentUpdated = await apartmentRepositoryImp().updateApartment(apartment, apartmentId)
+
+        if (isApartmentUpdated) {
+            res.sendStatus(200)
+        } else {
+            res.sendStatus(500)
+        }
+    } catch (error) {
+        next(error)
+    }
+})

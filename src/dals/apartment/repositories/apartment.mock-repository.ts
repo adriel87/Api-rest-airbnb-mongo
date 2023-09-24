@@ -32,6 +32,21 @@ const addNewReviewToApartment = (apartmentId:string, review:Review): boolean =>{
     return false
 }
 
+const updateApartment = (apartment:Apartment) : boolean=> {
+    if (mocksApartment.find(a => apartment.id === a.id)) {
+        mocksApartment.map(a =>{
+            if (a.id === apartment.id) {
+                return {
+                    ...apartment
+                }
+            }
+            return a
+        })
+        return true
+    }
+    return false
+}
+
 
 
 
@@ -44,5 +59,8 @@ export const apartmentMockRepository : ApartmentRespository = {
     },
     addNewReview: async (apartmentId:string, review:Review) =>{
         return addNewReviewToApartment(apartmentId, review)
+    },
+    updateApartment:async (apartment) => {
+        return updateApartment(apartment)
     }
 }
