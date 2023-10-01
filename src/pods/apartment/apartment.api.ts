@@ -46,7 +46,7 @@ apartmentApi
         next(error)
     }
 })
-.put('/:id',async (req, res, next) => {
+.put('/:id',userAuthorization("ADMIN") ,async (req, res, next) => {
     try {
         const apartment = req.body?.apartment
         const apartmentId = req.params?.id
