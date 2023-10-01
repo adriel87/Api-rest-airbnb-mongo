@@ -2,7 +2,7 @@ import { Role } from "#common-app/index.js";
 
 
 export interface User {
-    id: string
+    id?: string
     name:string,
     email: string,
     enable: boolean,
