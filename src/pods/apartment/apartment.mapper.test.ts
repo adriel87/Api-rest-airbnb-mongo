@@ -1,6 +1,8 @@
 import colors from 'colors'
 import { ObjectId } from 'mongodb'
-import { apartmentFromApiToModel, apartmentFromModelToApi, Apartment as apiModel, Review as apiReview, listApartmentFromApiToModel, listReviewsFromApiToModel, reviewFromApiToModel, reviewFromModelToApi} from "#pods/index.js"
+// import { apartmentFromApiToModel, apartmentFromModelToApi, Apartment as apiModel, Review as apiReview, listApartmentFromApiToModel, listReviewsFromApiToModel, reviewFromApiToModel, reviewFromModelToApi} from "#pods/index.js"
+import { Apartment as apiModel , Review as apiReview } from './apartment.api-model.js'
+import { apartmentFromApiToModel,apartmentFromModelToApi,listApartmentFromApiToModel,listReviewsFromApiToModel,listReviewsFromModelToApi,reviewFromApiToModel,reviewFromModelToApi } from './apartment.mappers.js'
 import { Apartment as domainModel, Review as domainReview } from '#dals/index.js'
 
 describe(colors.bgGreen.bold(' Apartment mappers '), ()=>{
@@ -233,8 +235,8 @@ describe(colors.bgGreen.bold(' Review mappers '), ()=>{
             expect(review.date.$date).toBe('date')
             expect(review._id).not.toBeNull()
             expect(review.reviewer_name).toBe('paco')
-            expect(review.listing_id).toBeNull()
-            expect(review.reviewer_id).toBeNull()
+            expect(review.listing_id).not.toBeNull()
+            expect(review.reviewer_id).not.toBeNull()
 
         })
 

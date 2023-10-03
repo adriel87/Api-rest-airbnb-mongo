@@ -48,8 +48,8 @@ export const reviewFromModelToApi = (review: modelReview) : apiModelReview => ({
     date: {
         $date:review?.date ?? ''
     },
-    listing_id: new ObjectId().toHexString(),
-    reviewer_id: new ObjectId().toHexString(),
+    listing_id: review ? new ObjectId().toHexString() : null,
+    reviewer_id: review ? new ObjectId().toHexString() : null,
 })
 
 export const listReviewsFromModelToApi = (reviews: modelReview[]) : apiModelReview[] => [...reviews.map(reviewFromModelToApi)]
