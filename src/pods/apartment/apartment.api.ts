@@ -6,7 +6,7 @@ import { Router } from "express";
 
 export const apartmentApi = Router()
 
-apartmentApi.use(userAuthenticate)
+// apartmentApi.use(userAuthenticate)
 
 apartmentApi
 .get('/',(_, res)=>{
@@ -14,10 +14,12 @@ apartmentApi
     res.send('hola')
 })
 .get('/apartments' ,async (req, res, next)=>{
+    // TODO: incluir el filtro del pais
     try {
         const page = Number(req.query.page);
         const pageSize = Number(req.query.pageSize);
-        const apartments = await apartmentRepositoryImp().getApartmentList(page,pageSize)
+        const country = req.query.country as string;
+        const apartments = await apartmentRepositoryImp().getApartmentList(country,page,pageSize)
         res.send(apartments);
     } catch (error) {
         next(error)

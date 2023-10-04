@@ -5,7 +5,7 @@ import * as hashPassword from './hash-password.util.js'
 describe('UTILS --- HASH PASSWORD', ()=>{
     describe('generate salt', ()=>{
         test('should return a salt whit size 32', async ()=>{
-            console.log(process.env.NODE_ENV);
+            console.log(process.env.SALT_LENGTH);
             
             //ARRANGE
             const saltLength = 32

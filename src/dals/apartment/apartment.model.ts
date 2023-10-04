@@ -12,6 +12,7 @@ export interface Apartment {
     name: string
     description: string
     address: string
+    country: string
     rooms: number
     numberOfBeds: number
     numberOfBathrooms: number
