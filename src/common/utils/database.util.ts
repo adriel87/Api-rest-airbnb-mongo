@@ -1,4 +1,3 @@
-import { envConstant } from '#core/index.js';
 import { MongoClient, MongoClientOptions} from 'mongodb'
 
 export const checkMongoConnection = async (url: string, options?:MongoClientOptions) => {

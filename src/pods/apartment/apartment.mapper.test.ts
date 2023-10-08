@@ -1,6 +1,8 @@
 import colors from 'colors'
 import { ObjectId } from 'mongodb'
-import { apartmentFromApiToModel, apartmentFromModelToApi, Apartment as apiModel, Review as apiReview, listApartmentFromApiToModel, listReviewsFromApiToModel, reviewFromApiToModel, reviewFromModelToApi} from "#pods/index.js"
+// import { apartmentFromApiToModel, apartmentFromModelToApi, Apartment as apiModel, Review as apiReview, listApartmentFromApiToModel, listReviewsFromApiToModel, reviewFromApiToModel, reviewFromModelToApi} from "#pods/index.js"
+import { Apartment as apiModel , Review as apiReview } from './apartment.api-model.js'
+import { apartmentFromApiToModel,apartmentFromModelToApi,listApartmentFromApiToModel,listReviewsFromApiToModel,listReviewsFromModelToApi,reviewFromApiToModel,reviewFromModelToApi } from './apartment.mappers.js'
 import { Apartment as domainModel, Review as domainReview } from '#dals/index.js'
 
 describe(colors.bgGreen.bold(' Apartment mappers '), ()=>{
@@ -15,7 +17,8 @@ describe(colors.bgGreen.bold(' Apartment mappers '), ()=>{
                 name: 'el test suite',
                 description: 'un super lugar de amor',
                 address:{
-                    street:'entre un sitio y otro'
+                    street:'entre un sitio y otro',
+                    country:'country'
                 },
                 bedrooms: 10,
                 beds:2,
@@ -31,6 +34,7 @@ describe(colors.bgGreen.bold(' Apartment mappers '), ()=>{
             expect(apartment.name).toBe('el test suite')
             expect(apartment.description).toStrictEqual('un super lugar de amor')
             expect(apartment.address).toStrictEqual('entre un sitio y otro')
+            expect(apartment.country).toStrictEqual('country')
             expect(apartment.rooms).toStrictEqual(10)
             expect(apartment.numberOfBeds).toStrictEqual(2)
             expect(apartment.numberOfBathrooms).toEqual(1)
@@ -65,7 +69,8 @@ describe(colors.bgGreen.bold(' Apartment mappers '), ()=>{
                     name: 'el test suite',
                     description: 'un super lugar de amor',
                     address:{
-                        street:'entre un sitio y otro'
+                        street:'entre un sitio y otro',
+                        country:'country'
                     },
                     bedrooms: 10,
                     beds:2,
@@ -81,6 +86,7 @@ describe(colors.bgGreen.bold(' Apartment mappers '), ()=>{
             expect(listOfApartment[0].name).toBe('el test suite')
             expect(listOfApartment[0].description).toStrictEqual('un super lugar de amor')
             expect(listOfApartment[0].address).toStrictEqual('entre un sitio y otro')
+            expect(listOfApartment[0].country).toStrictEqual('country')
             expect(listOfApartment[0].rooms).toStrictEqual(10)
             expect(listOfApartment[0].numberOfBeds).toStrictEqual(2)
             expect(listOfApartment[0].numberOfBathrooms).toEqual(1)
@@ -108,6 +114,7 @@ describe(colors.bgGreen.bold(' Apartment mappers '), ()=>{
             // arrange
             const apartmentFromApiModel : domainModel = {
                 address:'address',
+                country: 'country',
                 description:'description',
                 name:'name',
                 numberOfBathrooms:1,
@@ -233,8 +240,8 @@ describe(colors.bgGreen.bold(' Review mappers '), ()=>{
             expect(review.date.$date).toBe('date')
             expect(review._id).not.toBeNull()
             expect(review.reviewer_name).toBe('paco')
-            expect(review.listing_id).toBeNull()
-            expect(review.reviewer_id).toBeNull()
+            expect(review.listing_id).not.toBeNull()
+            expect(review.reviewer_id).not.toBeNull()
 
         })
 

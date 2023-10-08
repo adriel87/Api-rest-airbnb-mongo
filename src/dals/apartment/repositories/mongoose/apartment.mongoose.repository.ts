@@ -5,7 +5,7 @@ import { ApartmentRespository } from "../apartment.repository.js";
 import { apartmentFromApiToModel, listApartmentFromApiToModel, reviewFromModelToApi } from "#pods/index.js";
 
 export const apartmentMongooseRepository : ApartmentRespository = {
-    getApartmentList: async function (page?: number, pageSize?: number): Promise<Apartment[]> {
+    getApartmentList: async function (country:string, page?: number, pageSize?: number): Promise<Apartment[]> {
         const context = apartmentContext() as mongooseContextType;
         let skip = 0;
         const limit = pageSize ? pageSize : 10;

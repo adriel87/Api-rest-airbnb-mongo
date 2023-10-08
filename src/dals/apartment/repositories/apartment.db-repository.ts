@@ -18,7 +18,7 @@ const getApartmentById = async (apartmentId:string) =>{
     return apartment
 }
 
-const getApartmentListPaginated = async (page: number, pageSize:number) => {
+const getApartmentListPaginated = async (country: string, page: number, pageSize:number) => {
     const apartmentCollection = apartmentContext() as Collection<ApartmentApi>
     let startIndex = 0
     if (page && pageSize) {
@@ -26,7 +26,9 @@ const getApartmentListPaginated = async (page: number, pageSize:number) => {
     }
 
     const apartmentsDB = await apartmentCollection
-        .find({},{
+        .find({
+            'address.country':country
+        },{
             skip:startIndex,
             limit:pageSize ?? 10
         })
@@ -75,8 +77,8 @@ const updateApartment = async (apartment:ApartmentApi, apartmentId: string) =>{
 
 export const apartmentDBRepository : ApartmentRespository = {
 
-    getApartmentList : async (page: number, pageSize:number) => {
-     const apartments = await getApartmentListPaginated(page,pageSize)
+    getApartmentList : async (country:string, page: number, pageSize:number) => {
+     const apartments = await getApartmentListPaginated(country,page,pageSize)
      return apartments
     },
     getApartment: async (apartmentId: string) => {

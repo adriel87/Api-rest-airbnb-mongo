@@ -43,6 +43,7 @@ export const userAuthorization = (allowRole:Role): RequestHandler => async (req,
         }
         
     } catch (error) {
+        res.sendStatus(403)
         next(error)    
     }
 }

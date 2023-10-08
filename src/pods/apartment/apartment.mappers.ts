@@ -8,6 +8,7 @@ export const listApartmentFromApiToModel = (apartments: apiModel[]) : model[] =>
 
 export const apartmentFromApiToModel = (apartment : apiModel) : model=> ({
     address: apartment?.address?.street ?? '',
+    country: apartment?.address?.country ?? '',
     description: apartment?.description ?? '',
     id:apartment?._id.toString() ?? '',
     name:apartment?.name ?? '',
@@ -20,7 +21,8 @@ export const apartmentFromApiToModel = (apartment : apiModel) : model=> ({
 export const apartmentFromModelToApi = (apartment: model): apiModel => ({
     _id: apartment?.id ? new ObjectId(apartment.id) : new ObjectId(),
     address:{
-        street: apartment?.address ?? ''
+        street: apartment?.address ?? '',
+        country: apartment?.country ?? ''
     },
     description:apartment?.description ?? '',
     name:apartment?.name ?? '',
@@ -48,8 +50,8 @@ export const reviewFromModelToApi = (review: modelReview) : apiModelReview => ({
     date: {
         $date:review?.date ?? ''
     },
-    listing_id: new ObjectId().toHexString(),
-    reviewer_id: new ObjectId().toHexString(),
+    listing_id: review ? new ObjectId().toHexString() : null,
+    reviewer_id: review ? new ObjectId().toHexString() : null,
 })
 
 export const listReviewsFromModelToApi = (reviews: modelReview[]) : apiModelReview[] => [...reviews.map(reviewFromModelToApi)]
