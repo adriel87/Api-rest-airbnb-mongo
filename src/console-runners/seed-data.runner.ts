@@ -1,4 +1,4 @@
-import { checkMongoConnection, runCommand, runCommands } from "#common/index.js";
+import { checkMongoConnection, runCommands } from "#common/index.js";
 import { envConstant } from "#core/index.js";
 import inquirer from "inquirer";
 
@@ -34,15 +34,6 @@ export const run = async () => {
       `docker exec --workdir ${workdir} ${containerName} mongorestore --db ${folderName} .`,
       'docker compose down'
     ]
-    // const wakeUpDocker = `docker compose up`
-    // const copyCommand = `docker cp ${path}  ${containerName}:${workdir}`
-    // const restoreCommand = `docker exec --workdir ${workdir} ${containerName} mongorestore --db ${folderName} .` 
-
-    // for (const command of commandsToRun) {
-    //   await runCommand(command)
-    // }
-    // await runCommand(copyCommand)
-    // await runCommand(restoreCommand)
 
     await runCommands(commandsToRun)
 
