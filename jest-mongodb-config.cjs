@@ -5,7 +5,7 @@ module.exports = {
         skipMD5: true,
       },
       instance: {
-        dbName: 'test-apartment-store',
+        dbName: 'test-apartment-db',
       },
       autoStart: false,
     },

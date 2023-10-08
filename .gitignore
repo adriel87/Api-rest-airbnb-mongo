@@ -9,6 +9,7 @@ node_modules
 dist
 .env
 mongo-data
+globalConfig.json
 
 # db
 mongo-data
