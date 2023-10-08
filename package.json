@@ -4,7 +4,12 @@
   "description": "Basic Api rest for book an apartment",
   "main": "src/index.ts",
   "type": "module",
+  "engines": {
+    "npm":"please-use-pnpm",
+    "yarn": "please-use-pnpm"
+  },
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "prestart": "pnpm create-folder;  pnpm create-env-file",
     "create-folder": "sh ./scripts/create-folder-dev.sh",
     "create-env-file": "sh ./scripts/create-dev-env.sh",

@@ -1,0 +1,217 @@
+{
+	"info": {
+		"_postman_id": "bbb8560f-f695-4647-9bb6-d6dbdb0b188d",
+		"name": "lemon-back",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17204381"
+	},
+	"item": [
+		{
+			"name": "apartmentApi",
+			"item": [
+				{
+					"name": "users",
+					"item": [
+						{
+							"name": "create user",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"user\":{\n        \"name\":\"admin\",\n        \"email\":\"admin@admin.com\",\n        \"password\":\"1234\",\n        \"enable\": true,\n        \"createDate\": \"24/9/2023, 13:17:53\",\n        \"role\": \"ADMIN\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/user/create",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"create"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "apartments",
+					"item": [
+						{
+							"name": "Hello response",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "apartments list",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/api/apartment/apartments?page=1&pageSize=1&country=Spain",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"apartment",
+										"apartments"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "pageSize",
+											"value": "1"
+										},
+										{
+											"key": "country",
+											"value": "Spain"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "apartment by id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/api/apartment/65097600a74000a4a4a2268b",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"apartment",
+										"65097600a74000a4a4a2268b"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update apartment by id",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"apartment\": {\n        \"address\": \"Rio de Janeiro, Rio de Janeiro, Brazil\",\n        \"description\": \"One bedroom + sofa-bed in quiet and bucolic neighbourhood right next to the Botanical Garden. Small garden, outside shower, well equipped kitchen and bathroom with shower and tub. Easy for transport with many restaurants and basic facilities in the area. Lovely one bedroom + sofa-bed in the living room, perfect for two but fits up to four comfortably.  There´s a small outside garden with a shower There´s a well equipped open kitchen with both 110V / 220V wall plugs and one bathroom with shower, tub and even a sauna machine! All newly refurbished! I´ll be happy to help you with any doubts, tips or any other information needed during your stay. This charming ground floor flat is located in Horto, a quiet and bucolic neighborhood just next to the Botanical Garden, where most of the descendants of it´s first gardeners still live. You´ll be 30 minutes walk from waterfalls in the rainforest with easy hiking trails! There are nice bars and restaurants as well as basic facilities - pharmacy, b\",\n        \"id\": \"65097600a74000a4a4a22687\",\n        \"name\": \"Horto flat with small garden\",\n        \"numberOfBathrooms\": 0,\n        \"numberOfBeds\": 200,\n        \"reviews\": [],\n        \"rooms\": 2\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/apartment/65097600a74000a4a4a2268b",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"apartment",
+										"65097600a74000a4a4a2268b"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "add review to apartment by",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"review\":{\n        \"date\":\"20-20-2020\",\n        \"userName\":\"mickonxio\",\n        \"comment\":\"una casa bonita si\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/apartment/65097600a74000a4a4a22687/addNewReview",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"apartment",
+										"65097600a74000a4a4a22687",
+										"addNewReview"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "authorization",
+					"item": [
+						{
+							"name": "login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\":\"admin@admin.com\",\n    \"password\":\"1234\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/auth/login",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

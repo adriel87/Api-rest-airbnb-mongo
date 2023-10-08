@@ -1,56 +1,13 @@
 <!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 <a name="readme-top"></a>
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Don't forget to give the project a star!
-*** Thanks again! Now go create something AMAZING! :D
--->
 
-
-
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
-<!-- [![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url] -->
-
-
-
-<!-- PROJECT LOGO -->
 <br />
 <div align="center">
   <a href="">
     <img src="public/images/6c51ea8f8de48e439d4e3c358a89c07837bbf409_00.gif" alt="Logo" width="80" height="80">
   </a>
 
-  <!-- <h3 align="center">Best-README-Template</h3>
-
-  <p align="center">
-    An awesome README template to jumpstart your projects!
-    <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
-  </p> -->
 </div> 
-
-
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -71,6 +28,7 @@
     </li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#in-addition">In Addition</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -117,20 +75,30 @@ install node
 
 ### Installation
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
-
-
 1. Clone the repo
    ```sh
    git clone https://github.com/adriel87/Api-rest-airbnb-mongo.git
    ```
 2. Install NPM packages
    ```sh
-   npm install
+   pnpm install
    ```
-3. Set your API in `env` file, take .env.example rename for .env and update your variables
+   all scripts in `package.json` are made thinking in pnpm, please use pnpm for this project
 
-4. https://github.com/Lemoncode/mongodb-sample-dbs-backup
+3. Set your `env` and `.env.test` file, take .env.example create a copy and rename for .env and .env.test and update your variables
+
+4. before run the project you need to create a mongodb database
+  1. first clone the next repository https://github.com/Lemoncode/mongodb-sample-dbs-backup
+  2. you could use console-runner to create and seed the database
+
+  ```sh
+  pnpm start:console-runners
+  ```
+  select `seed data`
+
+  3. Now you need to create 2 valid user to test the application run console runner again and select create user
+  
+  creata one user whit role `ADMIN` and one whit role `USER`
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -139,11 +107,28 @@ _Below is an example of how you can instruct your audience on installing and set
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-<!-- TODO: ADD HOW TO USE -->
 
-1. once you install the project import the postman collection to your postman
+1. once you install the project [import the postman collection to your postman](https://learning.postman.com/docs/getting-started/importing-and-exporting/importing-data/)
 
+2. right now you can run the next command
 
+```sh
+pnpm start
+```
+
+3. consume the api
+  - first login, this action set in your postman or browser a cookie whit token
+  - use the apartment api define in apartments collection
+
+### testing
+
+the project count whit unit test and e2e test
+
+```sh
+pnpm test
+```
+
+I can't end test for all helpers files, to much hot 🔥🔥🔥
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -160,11 +145,21 @@ _Below is an example of how you can instruct your audience on installing and set
 
 ### optional
 
-- [ ] enable login
-- [ ] create endpoint to update an apartment
-- [ ] enable login
-- [ ] integration test
-- [ ] console runner, seed and restore
+- [x] enable login
+- [x] create endpoint to update an apartment
+- [x] enable login
+- [x] integration test
+- [x] console runner, seed and restore
+- [x] mongoose implementation
+
+for mongoose issue you need change the environment variable `USE_MONGOOSE` to true
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+### In Addition
+
+For this exercise I decided to create a new script in repo `create-folder-dev.sh` because in UNIX-SYSTEMS we need to create a folder for DB manually, the script only create the folder when the folder don't exists.
+
+Also I change the behavior of index of console-runner, reading the files in folder and listing in CLI menu 
  
 See the [open issues](https://github.com/adriel87/Api-rest-airbnb-mongo/issues) for a full list of proposed features (and known issues).
 
@@ -178,7 +173,7 @@ See the [open issues](https://github.com/adriel87/Api-rest-airbnb-mongo/issues) 
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+Adriel Arocha Oronoz - [@AdrielOronoz](https://twitter.com/AdrielOronoz) - adrielarochaoronoz@gmail.com
 
 Project Link: [Api-rest-airbnb-mongo](https://github.com/adriel87/Api-rest-airbnb-mongo)
 

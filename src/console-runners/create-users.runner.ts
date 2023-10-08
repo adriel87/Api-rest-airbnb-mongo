@@ -1,10 +1,8 @@
-import { checkMongoConnection, runCommand } from "#common/index.js";
-import { connectToDBServer, envConstant } from "#core/index.js";
+import { checkMongoConnection } from "#common/index.js";
+import { connectToDBServer, disconnectFromDBSever, envConstant } from "#core/index.js";
 import { User, userRepository } from "#dals/index.js";
-import userContext from "#dals/user/user.context.js";
 import inquirer from "inquirer";
 
-const workdir = '/opt/app'
 
 
 export const run = async () => {
@@ -54,7 +52,7 @@ if (hasConnection) {
 
     await userRepository.saveUser(newUser)
    
-    
+    await disconnectFromDBSever()
 }
   
 
